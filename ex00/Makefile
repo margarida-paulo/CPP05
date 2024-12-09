@@ -8,14 +8,10 @@ SRC = src/Bureaucrat.cpp
 
 MAIN = main.cpp
 
-OBJ = $(MAIN:.cpp=.o) $(EXCEPTIONS:.cpp=.o) $(SRC:.cpp=.o)
+OBJ = $(MAIN:.cpp=.o) $(SRC:.cpp=.o)
 
 
 HEADERS = includes/Bureaucrat.hpp
-
-EXCEPTIONS = exceptions/src/GradeTooHighException.cpp exceptions/src/GradeTooLowException.cpp
-
-EXCEPTIONS_HEADERS = exceptions/includes/GradeTooHighException.hpp exceptions/includes/GradeTooLowException.hpp
 
 all : ${NAME}
 
@@ -24,7 +20,7 @@ ${NAME}: ${OBJ}
 	@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 	@echo "Compiled successfuly!"
 
-%.o: %.cpp ${HEADERS} ${EXCEPTIONS_HEADERS}
+%.o: %.cpp ${HEADERS}
 	@echo "Compiling $< into object file"
 	@$(CC) $(FLAGS) -o $@ -c $<
 

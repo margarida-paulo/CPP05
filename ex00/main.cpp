@@ -1,12 +1,23 @@
 #include "includes/Bureaucrat.hpp"
-#include "exceptions/includes/exceptions.hpp"
 
 int main(){
 	try{
-		Bureaucrat("Maggie", 10);
-		//Bureaucrat("Cami", -1);
-		Bureaucrat("Pouya", 160);
+		std::cout << "Best student:" << std::endl;
+		Bureaucrat ryan("Ryan", 1);
+
+		std::cout << "Worst student:" << std::endl;
+		Bureaucrat mary("Mary", 130);
+
+		//std::cout << "Best student tries to increase his grade:" << std::endl;
+		//ryan.incrementGrade();
+		for (int i = 0; i < 100; i++) {
+			std::cout << "Worst student tries to decrease her grade:" << std::endl;
+			mary.decrementGrade();
+			mary.showStats();
+		}
+
 	} catch (std::exception &e){
 		std::cout << e.what();
 	}
 }
+

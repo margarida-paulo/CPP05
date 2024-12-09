@@ -57,8 +57,7 @@ std::string Bureaucrat::getName() const{
 }
 
 void Bureaucrat::showStats(){
-	std::cout << "Name: " << _name << std::endl;
-	std::cout << "Grade: " << _grade << std::endl;
+	std::cout << std::endl << *this << std::endl;
 }
 
 
@@ -75,3 +74,12 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj){
 	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() << "." << std::endl;
 	return os;
 }
+
+const char* Bureaucrat::GradeTooHighException::what() const throw(){
+	return "The grade is too high\n";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw(){
+	return "The grade is too low\n";
+}
+
