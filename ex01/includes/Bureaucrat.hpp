@@ -1,8 +1,10 @@
 #ifndef BUREAUCRAT
-#define BUREAUCRAT
+# define BUREAUCRAT
 
 #include <string>
 #include <iostream>
+
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -42,6 +44,9 @@ class Bureaucrat
 		void decrementGrade();
 
 		void showStats();
+
+		void signForm(bool gotSigned, Form form, std::string reason);
+
 
 };
 
