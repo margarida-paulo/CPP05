@@ -1,5 +1,5 @@
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
+#include "../includes/AForm.hpp"
 
 
 //Constructors
@@ -84,11 +84,11 @@ const char* Bureaucrat::GradeTooLowException::what() const throw(){
 	return "The grade is too low\n";
 }
 
-void Bureaucrat::signForm(bool gotSigned, Form *form, std::string reason){
+void Bureaucrat::signAForm(bool gotSigned, AForm *aform, std::string reason){
 	if (gotSigned)
-		std::cout << this->_name << " signed " << form->getName() << std::endl;
+		std::cout << this->_name << " signed " << aform->getName() << std::endl;
 	else
-		std::cout << this->_name << " couldn’t sign " << form->getName() << " because " << reason << "." << std::endl;
+		std::cout << this->_name << " couldn’t sign " << aform->getName() << " because " << reason << "." << std::endl;
 }
 
 

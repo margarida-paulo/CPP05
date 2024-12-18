@@ -1,5 +1,5 @@
 #include "includes/Bureaucrat.hpp"
-#include "includes/Form.hpp"
+#include "includes/AForm.hpp"
 
 int safeOnlyNumbersInput(){
 	std::string input;
@@ -36,7 +36,7 @@ int main(){
 	int gradeToExecute = safeOnlyNumbersInput();
 
 	try{
-		Form form(formName, gradeToSign, gradeToExecute);
+		AForm form(formName, gradeToSign, gradeToExecute);
 		Bureaucrat guy(name, grade);
 		while (true){
 			std::cout << "Insert a 1 to increment the grade, a -1 to decrement it, or a 0 to sign the form." << std::endl;

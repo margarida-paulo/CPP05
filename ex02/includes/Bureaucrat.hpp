@@ -4,9 +4,9 @@
 #include <string>
 #include <iostream>
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 class Bureaucrat
 {
 	private:
@@ -46,7 +46,7 @@ class Bureaucrat
 
 		void showStats();
 
-		void signForm(bool gotSigned, Form *form, std::string reason);
+		void signAForm(bool gotSigned, AForm *aform, std::string reason);
 
 
 };

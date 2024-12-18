@@ -1,22 +1,22 @@
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
+#include "../includes/AForm.hpp"
 
 //ORTHODOX CANONICAL FORM
 
 //Constructors
-Form::Form() :  _name("Default Form"), _signed(false), _gradeToSign(75), _gradeToExecute(75){
-	std::cout << "Default Form constructor was called." << std::endl;
+AForm::AForm() :  _name("Default AForm"), _signed(false), _gradeToSign(75), _gradeToExecute(75){
+	std::cout << "Default AForm constructor was called." << std::endl;
 	std::cout << *this << std::endl;
 }
 
-Form::Form(Form &other) : _signed(other._signed), _gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute){
-	std::cout << "Copy Form constructor was called." << std::endl;
+AForm::AForm(AForm &other) : _signed(other._signed), _gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute){
+	std::cout << "Copy AForm constructor was called." << std::endl;
 	// Copy parameters. Don't forget shallow and deep copies!
 	*this = other;
 }
 
-Form::Form(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute){
-	std::cout << "Parameters Form constructor was called." << std::endl;
+AForm::AForm(std::string name, int gradeToSign, int gradeToExecute) : _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute){
+	std::cout << "Parameters AForm constructor was called." << std::endl;
 	if (gradeToSign < 1 || gradeToExecute < 1)
 		throw GradeTooHighException();
 	else if (gradeToSign > 150 || gradeToExecute > 150)
@@ -27,14 +27,14 @@ Form::Form(std::string name, int gradeToSign, int gradeToExecute) : _name(name),
 
 //Destructor
 
-Form::~Form(){
-	std::cout << "Form destructor was called." << std::endl;
+AForm::~AForm(){
+	std::cout << "AForm destructor was called." << std::endl;
 }
 
 
 //Operators
 
-Form &Form::operator=(Form &other){
+AForm &AForm::operator=(AForm &other){
 	if (this != &other){
 		// Copy parameters. Don't forget shallow and deep copies!
 		_signed = other._signed;
@@ -45,32 +45,32 @@ Form &Form::operator=(Form &other){
 }
 
 // Getters and Setters
-std::string Form::getName() const{
+std::string AForm::getName() const{
 	return _name;
 }
-int Form::getGradeToSign() const{
+int AForm::getGradeToSign() const{
 	return _gradeToSign;
 }
-int Form::getGradeToExecute() const{
+int AForm::getGradeToExecute() const{
 	return _gradeToExecute;
 }
 
-bool Form::isSigned() const{
+bool AForm::isSigned() const{
 	return _signed;
 }
 
 // Other Functions
 
-const char* Form::GradeTooHighException::what() const throw(){
+const char* AForm::GradeTooHighException::what() const throw(){
 	return "The grade is too high\n";
 }
 
-const char* Form::GradeTooLowException::what() const throw(){
+const char* AForm::GradeTooLowException::what() const throw(){
 	return "The grade is too low\n";
 }
 
-std::ostream &operator<<(std::ostream &os, Form &object){
-	os << "Form signed: ";
+std::ostream &operator<<(std::ostream &os, AForm &object){
+	os << "AForm signed: ";
 	if (object.isSigned() == true)
 		os << "Yes" << std::endl;
 	else
@@ -80,16 +80,16 @@ std::ostream &operator<<(std::ostream &os, Form &object){
 	return os;
 }
 
-void Form::beSigned(Bureaucrat &bureauGuy){
+void AForm::beSigned(Bureaucrat &bureauGuy){
 	if (_signed == true){
-		std::cout << "Form is already signed." << std::endl;
+		std::cout << "AForm is already signed." << std::endl;
 	}
 	else if (bureauGuy.getGrade() <= this->getGradeToSign()){
 		_signed = true;
-		bureauGuy.signForm(true, this, "signed successfully");
+		bureauGuy.signAForm(true, this, "signed successfully");
 	}
 	else {
-		bureauGuy.signForm(false, this, "grade to sign was too low");
+		bureauGuy.signAForm(false, this, "grade to sign was too low");
 		throw GradeTooLowException();
 	}
 }

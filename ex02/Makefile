@@ -1,16 +1,17 @@
-NAME = bureaucrat
+NAME = form
 
 CC = c++
 
 FLAGS = -Wall -Wextra -Werror -g -std=c++98
 
-SRC = src/Bureaucrat.cpp
+SRC = src/Bureaucrat.cpp src/AForm.cpp
 
 MAIN = main.cpp
 
 OBJ = $(MAIN:.cpp=.o) $(SRC:.cpp=.o)
 
-HEADERS = includes/Bureaucrat.hpp
+HEADERS = includes/Bureaucrat.hpp includes/AForm.hpp
+
 
 all : ${NAME}
 

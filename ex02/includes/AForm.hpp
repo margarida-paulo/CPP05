@@ -1,5 +1,5 @@
-#ifndef FORM
-# define FORM
+#ifndef AFORM
+# define AFORM
 
 #include <string>
 #include <iostream>
@@ -7,7 +7,7 @@
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
-class Form
+class AForm
 {
 	private:
 		const std::string _name;
@@ -17,13 +17,13 @@ class Form
 
 	public:
 		// ORTHODOX CANONICAL FORM
-		Form(); // Default constructor
-		Form(Form &other); // Copy constructor
-		~Form(); // Destructor
-		Form &operator=(Form &other); // Copy assignment operator
+		AForm(); // Default constructor
+		AForm(AForm &other); // Copy constructor
+		~AForm(); // Destructor
+		AForm &operator=(AForm &other); // Copy assignment operator
 
 
-		Form(std::string name, int gradeToSign, int gradeToExecute);
+		AForm(std::string name, int gradeToSign, int gradeToExecute);
 
 		// Getters and setters:
 		std::string getName() const;
@@ -47,6 +47,6 @@ class Form
 
 };
 
-std::ostream &operator<<(std::ostream &os, Form &object);
+std::ostream &operator<<(std::ostream &os, AForm &object);
 
 #endif
