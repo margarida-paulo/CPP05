@@ -47,6 +47,7 @@ class Bureaucrat
 		void showStats();
 
 		void signAForm(bool gotSigned, AForm *aform, std::string reason);
+		void executeForm(AForm const & form);
 
 
 };

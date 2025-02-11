@@ -23,7 +23,7 @@ Bureaucrat::Bureaucrat(Bureaucrat &other): _name(other._name), _grade(other._gra
 //Destructor
 
 Bureaucrat::~Bureaucrat(){
-	std::cout << "Bureaucrat destructor was called." << std::endl;
+//	std::cout << "Bureaucrat destructor was called." << std::endl;
 }
 
 
@@ -72,7 +72,7 @@ void Bureaucrat::decrementGrade(){
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj){
-	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() << "." << std::endl;
+	os << "Bureaucrat name: " << obj.getName() << std::endl << "Grade: " << obj.getGrade() << std::endl;
 	return os;
 }
 
@@ -91,4 +91,7 @@ void Bureaucrat::signAForm(bool gotSigned, AForm *aform, std::string reason){
 		std::cout << this->_name << " couldn’t sign " << aform->getName() << " because " << reason << "." << std::endl;
 }
 
+void Bureaucrat::executeForm(AForm const & form){
+	form.execute(*this);
+}
 

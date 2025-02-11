@@ -4,13 +4,15 @@ CC = c++
 
 FLAGS = -Wall -Wextra -Werror -g -std=c++98
 
-SRC = src/Bureaucrat.cpp src/AForm.cpp
+SRC = src/Bureaucrat.cpp src/AForm.cpp src/PresidentialPardonForm.cpp \
+	src/RobotomyRequestForm.cpp src/ShrubberyCreationForm.cpp
 
 MAIN = main.cpp
 
 OBJ = $(MAIN:.cpp=.o) $(SRC:.cpp=.o)
 
-HEADERS = includes/Bureaucrat.hpp includes/AForm.hpp
+HEADERS = includes/Bureaucrat.hpp includes/AForm.hpp includes/PresidentialPardonForm.hpp \
+		includes/RobotomyRequestForm.hpp includes/ShrubberyCreationForm.hpp
 
 
 all : ${NAME}

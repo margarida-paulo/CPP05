@@ -11,7 +11,6 @@ AForm::AForm() :  _name("Default AForm"), _signed(false), _gradeToSign(75), _gra
 
 AForm::AForm(AForm &other) : _signed(other._signed), _gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute){
 	std::cout << "Copy AForm constructor was called." << std::endl;
-	// Copy parameters. Don't forget shallow and deep copies!
 	*this = other;
 }
 
@@ -28,7 +27,7 @@ AForm::AForm(std::string name, int gradeToSign, int gradeToExecute) : _name(name
 //Destructor
 
 AForm::~AForm(){
-	std::cout << "AForm destructor was called." << std::endl;
+//	std::cout << "AForm destructor was called." << std::endl;
 }
 
 
@@ -62,11 +61,15 @@ bool AForm::isSigned() const{
 // Other Functions
 
 const char* AForm::GradeTooHighException::what() const throw(){
-	return "The grade is too high\n";
+	return "The grade is too high.\n";
 }
 
 const char* AForm::GradeTooLowException::what() const throw(){
-	return "The grade is too low\n";
+	return "The grade is too low.\n";
+}
+
+const char* AForm::FormNotSignedException::what() const throw(){
+	return "The form is not signed.\n";
 }
 
 std::ostream &operator<<(std::ostream &os, AForm &object){
@@ -93,3 +96,23 @@ void AForm::beSigned(Bureaucrat &bureauGuy){
 		throw GradeTooLowException();
 	}
 }
+
+void AForm::setTarget(std::string target){
+	_target = target;
+}
+
+std::string AForm::getTarget() const{
+	return _target;
+}
+
+void AForm::checkRequirements(Bureaucrat const &guy) const{
+	if (_gradeToExecute < guy.getGrade()){
+		std::cout << "Execution failed. ";
+		throw GradeTooLowException();
+	}
+	else if (_signed == false) {
+		std::cout << "Execution failed. ";
+		throw FormNotSignedException();
+	}
+}
+

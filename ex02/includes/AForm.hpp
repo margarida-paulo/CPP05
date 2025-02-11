@@ -14,12 +14,13 @@ class AForm
 		bool _signed;
 		const int _gradeToSign;
 		const int _gradeToExecute;
+		std::string _target;
 
 	public:
 		// ORTHODOX CANONICAL FORM
 		AForm(); // Default constructor
 		AForm(AForm &other); // Copy constructor
-		~AForm(); // Destructor
+		virtual ~AForm(); // Destructor
 		AForm &operator=(AForm &other); // Copy assignment operator
 
 
@@ -30,9 +31,13 @@ class AForm
 		int getGradeToSign() const;
 		int getGradeToExecute() const;
 		bool isSigned() const;
+		std::string getTarget() const;
+		void setTarget(std::string target);
 
 		// Other functions:
 		void beSigned(Bureaucrat &bureauGuy);
+		virtual void execute (Bureaucrat const & executor) const = 0;
+		void checkRequirements(Bureaucrat const &guy) const;
 
 		//Exceptions
 		class GradeTooHighException : public std::exception {
@@ -45,6 +50,10 @@ class AForm
 			virtual const char* what() const throw();
 		};
 
+		class FormNotSignedException : public std::exception{
+			public:
+			virtual const char* what() const throw();
+		};
 };
 
 std::ostream &operator<<(std::ostream &os, AForm &object);
