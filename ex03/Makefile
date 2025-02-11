@@ -1,0 +1,39 @@
+NAME = form
+
+CC = c++
+
+FLAGS = -Wall -Wextra -Werror -g -std=c++98
+
+SRC = src/Bureaucrat.cpp src/AForm.cpp src/PresidentialPardonForm.cpp \
+	src/RobotomyRequestForm.cpp src/ShrubberyCreationForm.cpp src/Intern.cpp
+
+MAIN = main.cpp
+
+OBJ = $(MAIN:.cpp=.o) $(SRC:.cpp=.o)
+
+HEADERS = includes/Bureaucrat.hpp includes/AForm.hpp includes/PresidentialPardonForm.hpp \
+		includes/RobotomyRequestForm.hpp includes/ShrubberyCreationForm.hpp includes/Intern.hpp
+
+
+all : ${NAME}
+
+${NAME}: ${OBJ}
+	@echo "Compiling into object files"
+	@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+	@echo "Compiled successfuly!"
+
+%.o: %.cpp ${HEADERS}
+	@echo "Compiling $< into object file"
+	@$(CC) $(FLAGS) -o $@ -c $<
+
+clean:
+	@rm -rf ${OBJ}
+	@echo "Object files deleted."
+
+fclean : clean
+	@rm -rf ${NAME}
+	@echo "Executable deleted."
+
+re:
+	@make fclean
+	@make
