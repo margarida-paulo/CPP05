@@ -23,7 +23,7 @@ Bureaucrat::Bureaucrat(Bureaucrat &other): _name(other._name), _grade(other._gra
 //Destructor
 
 Bureaucrat::~Bureaucrat(){
-//	std::cout << "Bureaucrat destructor was called." << std::endl;
+	std::cout << "Bureaucrat destructor was called." << std::endl;
 }
 
 

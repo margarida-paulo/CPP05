@@ -3,6 +3,8 @@
 #include "../includes/ShrubberyCreationForm.hpp"
 #include "../includes/RobotomyRequestForm.hpp"
 #include "../includes/PresidentialPardonForm.hpp"
+#include "../includes/AForm.hpp"
+
 
 Intern::Intern() {
   std::cout << "Default Intern constructor was called." << std::endl;
@@ -21,22 +23,15 @@ Intern &Intern::operator=(Intern &other) {
 }
 
 AForm *Intern::makeForm(std::string type, std::string target) const {
-  std::string types[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
-  std::string names[] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
-  AForm *forms[] = {new ShrubberyCreationForm(target), new RobotomyRequestForm(target), new PresidentialPardonForm(target)};
-  for (int i = 0; i < 3; i++) {
-    if (type == types[i]) {
-      std::cout << "Intern creates " << names[i] << std::endl;
-      i++;
-        while (i < 3){
-          delete(forms[i]);
-          i++;
+    std::string types[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+    AForm::FormCreator creators[] = {AForm::createShrubberyCreationForm, AForm::createRobotomyRequestForm, AForm::createPresidentialPardonForm};
+
+    for (int i = 0; i < 3; i++) {
+        if (type == types[i]) {
+            std::cout << "Intern creates " << types[i] << std::endl;
+            return creators[i](target);
         }
-      return forms[i];
     }
-    else
-      delete(forms[i]);
-  }
-  std::cout << "Intern cannot create " << type << std::endl;
-  return NULL;
+    std::cout << "Intern cannot create " << type << std::endl;
+    return nullptr;
 }
