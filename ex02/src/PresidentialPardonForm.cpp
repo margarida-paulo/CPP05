@@ -21,7 +21,7 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm &other) {
 	// CONST PARAMETERS, DON'T USE, WON'T MAKE AN ACTUAL COPY!
 	if (this != &other)
-		this->setTarget(other.getTarget());
+		AForm::operator=(other);
 	return *this;
 }
 

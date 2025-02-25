@@ -20,7 +20,7 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm &other) {
 	// CONST PARAMETERS, DON'T USE, WON'T MAKE AN ACTUAL COPY!
 	if (this != &other)
-		this->setTarget(other.getTarget());
+		AForm::operator=(other);
 	return *this;
 }
 
