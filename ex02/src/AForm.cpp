@@ -73,6 +73,7 @@ const char* AForm::FormNotSignedException::what() const throw(){
 }
 
 std::ostream &operator<<(std::ostream &os, AForm &object){
+	os << "AForm name: " << object.getName() << std::endl;
 	os << "AForm signed: ";
 	if (object.isSigned() == true)
 		os << "Yes" << std::endl;

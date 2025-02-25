@@ -70,6 +70,7 @@ const char* Form::GradeTooLowException::what() const throw(){
 }
 
 std::ostream &operator<<(std::ostream &os, Form &object){
+	os << "Form name: " << object.getName() << std::endl;
 	os << "Form signed: ";
 	if (object.isSigned() == true)
 		os << "Yes" << std::endl;

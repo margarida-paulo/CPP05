@@ -38,15 +38,19 @@ int main(){
 	try{
 		Form form(formName, gradeToSign, gradeToExecute);
 		Bureaucrat guy(name, grade);
-		while (true){
-			std::cout << "Insert a 1 to increment the grade, a -1 to decrement it, or a 0 to sign the form." << std::endl;
-			int increment = safeOnlyNumbersInput();
+		std::cout << form << std::endl;
+		int increment = 0;
+		while (increment != 2){
+			std::cout << "Insert a 1 to increment the grade, a -1 to decrement it, or a 0 to sign the form. Insert 2 to exit." << std::endl;
+			increment = safeOnlyNumbersInput();
 			if (increment == -1)
 				guy.decrementGrade();
 			else if (increment == 1)
 				guy.incrementGrade();
 			else if (increment == 0)
 				form.beSigned(guy);
+			else if (increment == 2)
+				continue;
 			else
 				std::cout << "Invalid input." << std::endl;
 			std::cout << guy << std::endl;
