@@ -14,7 +14,7 @@ int safeOnlyNumbersInput(){
 		}
     }
 	try{
-		return std::stoi(input);
+		return atoi(input.c_str());
 	} catch (std::exception &e){
 		std::cout << "Invalid number input. Please insert a valid number." << std::endl;
 		return safeOnlyNumbersInput();
@@ -22,22 +22,23 @@ int safeOnlyNumbersInput(){
 }
 
 int main(){
-	std::cout << "Insert Bureaucrat's name" << std::endl;
-	std::string name;
-	std::getline(std::cin, name);
-	std::cout << "Insert Bureaucrat's grade. Must be between 1 and 150, or it will end the program." << std::endl;
-	int grade = safeOnlyNumbersInput();
-	std::cout << "Insert the form's name." << std::endl;
-	std::string formName;
-	std::getline(std::cin, formName);
-	std::cout << "Insert the form's grade to sign. Must be between 1 and 150, or the program will end after all the input is inserted." << std::endl;
-	int gradeToSign = safeOnlyNumbersInput();
-	std::cout << "Insert the form's grade to execute. Must be between 1 and 150, or the program will end after all the input is inserted." << std::endl;
-	int gradeToExecute = safeOnlyNumbersInput();
 
 	try{
-		Form form(formName, gradeToSign, gradeToExecute);
+		std::cout << "Insert Bureaucrat's name" << std::endl;
+		std::string name;
+		std::getline(std::cin, name);
+		std::cout << "Insert Bureaucrat's grade. Must be between 1 and 150, or it will end the program." << std::endl;
+		int grade = safeOnlyNumbersInput();
 		Bureaucrat guy(name, grade);
+		std::cout << "Insert the form's name." << std::endl;
+		std::string formName;
+		std::getline(std::cin, formName);
+		std::cout << "Insert the form's grade to sign. Must be between 1 and 150, or the program will end after all the input is inserted." << std::endl;
+		int gradeToSign = safeOnlyNumbersInput();
+		std::cout << "Insert the form's grade to execute. Must be between 1 and 150, or the program will end after all the input is inserted." << std::endl;
+		int gradeToExecute = safeOnlyNumbersInput();
+
+		Form form(formName, gradeToSign, gradeToExecute);
 		std::cout << form << std::endl;
 		int increment = 0;
 		while (increment != 2){

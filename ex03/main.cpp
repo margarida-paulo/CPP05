@@ -31,7 +31,7 @@ int safeOnlyNumbersInput(){
 		}
     }
 	try{
-		return std::stoi(input);
+		return atoi(input.c_str());
 	} catch (std::exception &e){
 		std::cout << "Invalid number input. Please insert a valid number." << std::endl;
 		return safeOnlyNumbersInput();
@@ -105,33 +105,32 @@ int menu(Bureaucrat &guy){
 
 
 int main(){
-	std::cout << "╋━━━━━━━━━━━━━━━━━━━━━━━━━━╋" << std::endl;
-	std::cout << "┃ Insert Bureaucrat's name ┃" << std::endl;
-	std::cout << "╋━━━━━━━━━━━━━━━━━━━━━━━━━━╋" << std::endl << std::endl;
-	std::string name;
-	std::getline(std::cin, name);
-	std::cout << std::endl << "╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋" << std::endl;
-	std::cout << "┃ Insert Bureaucrat's grade. Must be between 1 and 150, or it will end the program ┃" << std::endl;
-	std::cout << "╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋" << std::endl << std::endl;
-	
-	int grade = safeOnlyNumbersInput();
-
-	std::cout << std::endl << "╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋" << std::endl;
-	std::cout << "┃ Insert the name of the target ┃" << std::endl;
-	std::cout << "╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋" << std::endl << std::endl;
-
-	std::string target;
-	std::getline(std::cin, target);
-
-	Intern littleGuy;
-
-
 	try{
+		std::cout << "╋━━━━━━━━━━━━━━━━━━━━━━━━━━╋" << std::endl;
+		std::cout << "┃ Insert Bureaucrat's name ┃" << std::endl;
+		std::cout << "╋━━━━━━━━━━━━━━━━━━━━━━━━━━╋" << std::endl << std::endl;
+		std::string name;
+		std::getline(std::cin, name);
+		std::cout << std::endl << "╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋" << std::endl;
+		std::cout << "┃ Insert Bureaucrat's grade. Must be between 1 and 150, or it will end the program ┃" << std::endl;
+		std::cout << "╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋" << std::endl << std::endl;
+	
+		int grade = safeOnlyNumbersInput();
+		Bureaucrat guy(name, grade);
+
+		std::cout << std::endl << "╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋" << std::endl;
+		std::cout << "┃ Insert the name of the target ┃" << std::endl;
+		std::cout << "╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋" << std::endl << std::endl;
+
+		std::string target;
+		std::getline(std::cin, target);
+
+		Intern littleGuy;
+
+
 		AForm *SCForm = littleGuy.makeForm("shrubbery creation", target);
 		AForm *RRForm = littleGuy.makeForm("robotomy request", target);
 		AForm *PPForm = littleGuy.makeForm("presidential pardon", target);
-		littleGuy.makeForm("INVALID", target);
-		Bureaucrat guy(name, grade);
 		while (true){
 			switch(menu(guy)){
 				case INCREASEGRADE:

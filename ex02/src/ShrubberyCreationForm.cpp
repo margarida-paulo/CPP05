@@ -36,8 +36,11 @@ void ShrubberyCreationForm::execute (Bureaucrat const &executor) const{
     std::cout << e.what() << std::endl;
     return;
   }
+
+  std::string shrubbery(getTarget());
+  shrubbery += "_shrubbery";
   
-  std::ofstream shrubberyFile(getTarget() + "_shrubbery");
+  std::ofstream shrubberyFile(shrubbery.c_str());
   shrubberyFile << "              _{\\ _{\\{\\/}/}/}__\n" <<
 "             {/{/\\}{/{/\\}(\\}{/\\} _\n" <<
 "            {/{/\\}{/{/\\}(_)\\}{/{/\\}  _\n" <<

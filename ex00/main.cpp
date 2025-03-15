@@ -13,7 +13,7 @@ int safeOnlyNumbersInput(){
 		}
     }
 	try{
-		return std::stoi(input);
+		return atoi(input.c_str());
 	} catch (std::exception &e){
 		std::cout << "Invalid number input. Please insert a valid number." << std::endl;
 		return safeOnlyNumbersInput();
