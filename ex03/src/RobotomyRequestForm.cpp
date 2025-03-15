@@ -10,7 +10,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("RobotomyReq
   this->setTarget(target);
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &other) {
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &other): AForm(other) {
 	this->setTarget(other.getTarget());
 }
 RobotomyRequestForm::~RobotomyRequestForm() {

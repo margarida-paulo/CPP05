@@ -11,7 +11,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
   this->setTarget(target);
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &other) {
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &other): AForm(other) {
   this->setTarget(other.getTarget());
 }
 

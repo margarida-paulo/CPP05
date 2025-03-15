@@ -10,7 +10,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("Presi
   this->setTarget(target);
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &other) {
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &other): AForm(other) {
 	this->setTarget(other.getTarget());
 }
 
